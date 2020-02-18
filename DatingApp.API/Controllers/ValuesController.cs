@@ -21,7 +21,7 @@ namespace DatingApp.API.Controllers
         public IActionResult GetValues()
         {
 
-            var values = _context.Values.ToList();
+            var values =  _context.Values.ToList();
             return Ok(values);
         }
 
