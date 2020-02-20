@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using DatingApp.API.Models;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
+using System.Text;
 
 namespace DatingApp.API.Data
 {
@@ -31,7 +32,7 @@ namespace DatingApp.API.Data
         {
             using(var hash = new System.Security.Cryptography.HMACSHA512(passwordsalt))
             {
-                var computedHash = hash.ComputeHash(passwordsalt);
+                var computedHash = hash.ComputeHash(Encoding.UTF8.GetBytes(password));
                 for (int i = 0; i < computedHash.Length; i++)
                 {
                     if(computedHash[i] != passwordhash[i]) return false;   
